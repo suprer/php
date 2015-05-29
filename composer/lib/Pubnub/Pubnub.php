@@ -120,7 +120,7 @@ class Pubnub
      *
      * @return array success information.
      */
-    public function publish($channel, $messageOrg, $storeInHistory = true)
+    function publish1($channel, $messageOrg, $storeInHistory = true)
     {
         if (empty($channel) || empty($messageOrg)) {
             throw new PubnubException('Missing Channel or Message in publish()');
@@ -165,6 +165,15 @@ class Pubnub
             '0',
             PubnubUtil::url_encode($message)
         ), $query);
+    }
+
+    public function publish($args){
+
+        $_channel = $args['channel'];
+        $_msg = $args['message'];
+        $_store = ($args['storeInHistory'] != null)? $args['storeInHistory'] : true;
+
+        return $this->publish1($_channel,$_msg,$_store);
     }
 
     /**

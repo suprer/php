@@ -53,5 +53,13 @@ abstract class TestCase extends PHPUnit_Framework_TestCase {
             }
         }
     }
+
+
+    public function testPublish(){
+
+        $pubnub->publish(array('channel' => $aid.'-app',
+                               'message' => "command::updateItem_raffle('1','1','3')"));
+    }
+
 }
  
