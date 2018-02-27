@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # using custom image, see .circleci/images/primary/Dockerfile
+      - image: ubuntu:16.04
+
+    steps:
+      - checkout
+
+      - run:
+          name: Build and push Docker image
+          command: |
+            REPO="test4"
+            ls -la /
+            
+            
